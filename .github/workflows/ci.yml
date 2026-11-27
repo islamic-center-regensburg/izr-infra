@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main, dev]
+
+jobs:
+  # Makes `dev` the only way into `main`. Require this check on both branches.
+  main-from-dev-only:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          if [ "${{ github.base_ref }}" = "main" ] && [ "${{ github.head_ref }}" != "dev" ]; then
+            echo "PRs into main must come from dev (got: ${{ github.head_ref }})"; exit 1
+          fi
+
+  # Orchestrator tests only. Infrastructure is applied by hand, never from CI.
+  orchestrator-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m unittest discover -s scripts
