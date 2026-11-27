@@ -1,0 +1,10 @@
+website_repository_url = "https://github.com/OWNER/WEBSITE_REPOSITORY.git"
+screen_repository_url  = "https://github.com/OWNER/SCREEN_REPOSITORY.git"
+cms_repository_url     = "https://github.com/OWNER/DIRECTUS_BOOTSTRAP_REPOSITORY.git"
+github_app_name        = "YOUR_DOKPLOY_GITHUB_APP_NAME"
+domains = {
+  website       = "mosque-dev.example.com"
+  screen        = "screen-dev.example.com"
+  cms           = "cms-dev.example.com"
+}
+cms_disable_default_auth = false
